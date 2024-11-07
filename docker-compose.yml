@@ -1,0 +1,14 @@
+
+services:
+  nginx:
+    image: anolis-registry.cn-zhangjiakou.cr.aliyuncs.com/openanolis/nginx:1.14.1-8.6
+    container_name: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - hello
+  hello:
+    build: .
+    container_name: hello
